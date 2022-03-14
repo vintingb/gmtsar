@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 
+
 # Make sure install on Windows
 if (WIN32)
     SET(CMAKE_INSTALL_PREFIX C:/GMTSAR)
@@ -52,6 +53,8 @@ find_package(TIFF REQUIRED)
 set(LAPACK_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/lapack_windows/x64")
 find_package(LAPACK CONFIG REQUIRED)
 
+set(GMT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/gmt6/include")
+set(GMT_LIBRARY "${CMAKE_CURRENT_SOURCE_DIR}/lib/gmt6/lib/gmt.lib")
 find_package(GMT REQUIRED)
 
 # check for math and POSIX functions
@@ -62,12 +65,12 @@ add_subdirectory(gmtsar)
 # add_subdirectory (snaphu/src)
 add_subdirectory(preproc/S1A_preproc)
 
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/lib/libtiff.dll DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/lib/libtiff.dll.a DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/gmtsar/filters DESTINATION ${SHARE_DIR})
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/snaphu/config/snaphu.conf.brief DESTINATION ${SHARE_DIR}/snaphu/config)
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/snaphu/bin/snaphu.exe DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/snaphu/bin/msys-2.0.dll DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/lib/libtiff.dll DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/lib/libtiff.dll.a DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/gmtsar/filters DESTINATION ${SHARE_DIR})
+# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/snaphu/config/snaphu.conf.brief DESTINATION ${SHARE_DIR}/snaphu/config)
+# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/snaphu/bin/snaphu.exe DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/snaphu/bin/msys-2.0.dll DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 # Configuration done
 
 message(

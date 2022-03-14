@@ -20,7 +20,8 @@ add_library(gmtsar SHARED aastretch.c acpatch.c calc_dop.c conv2d.c do_freq_xcor
         sio_struct.c siocomplex.c spline.c trans_col.c utils.c utils_complex.c
         write_orb.c sbas_utils.c gmtsar.h lib_functions.h llt2xyz.h orbit.h
         sarleader_ALOS.h sarleader_fdr.h sfd_complex.h siocomplex.h soi.h xcorr.h
-        update_PRM.c update_PRM.h update_PRM_sub.c lib_strfuncs.c lib_functions.h)
+        update_PRM.h update_PRM_sub.c lib_strfuncs.c lib_functions.h soi.c gmtsar.c)
+
 target_link_libraries(gmtsar ${GMTSAR_LINK_LIBS})
 
 set(GMTSAR_LINK_LIBS ${GMTSAR_LINK_LIBS} gmtsar)

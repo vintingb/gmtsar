@@ -26,7 +26,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "mman.h"
+#include <sys/mman.h>
 
 char *USAGE = "\nUsage: "
               "resamp master.PRM aligned.PRM new_aligned.PRM new_aligned.SLC intrp \n"

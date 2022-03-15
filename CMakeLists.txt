@@ -1,11 +1,6 @@
-cmake_minimum_required(VERSION 3.21)
+#cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.16)
 
-
-# Make sure install on Windows
-if (WIN32)
-    SET(CMAKE_INSTALL_PREFIX C:/GMTSAR)
-    SET(SHARE_DIR C:/GMTSAR/share)
-endif ()
 
 # Make sure the user doesn't play dirty with symlinks
 get_filename_component(srcdir "${CMAKE_SOURCE_DIR}" REALPATH)
@@ -45,17 +40,32 @@ include(FindUnixCommands)
 find_program(SVN svn)
 find_program(GS gs gswin64)
 
-# Find dependent libraries
-set(TIFF_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/include")
-set(TIFF_LIBRARY "${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/lib/libtiff.dll")
-find_package(TIFF REQUIRED)
+# Make sure install on Windows
+if (WIN32)
+    SET(CMAKE_INSTALL_PREFIX C:/GMTSAR)
+    SET(SHARE_DIR C:/GMTSAR/share)
+    # Find dependent libraries
+    set(TIFF_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/include")
+    set(TIFF_LIBRARY "${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/lib/libtiff.dll")
+    find_package(TIFF REQUIRED)
 
-set(LAPACK_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/lapack_windows/x64")
-find_package(LAPACK CONFIG REQUIRED)
+    set(LAPACK_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/lapack_windows/x64")
+    find_package(LAPACK CONFIG REQUIRED)
 
-set(GMT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/gmt6/include")
-set(GMT_LIBRARY "${CMAKE_CURRENT_SOURCE_DIR}/lib/gmt6/lib/gmt.lib")
-find_package(GMT REQUIRED)
+    set(GMT_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/gmt6/include")
+    set(GMT_LIBRARY "${CMAKE_CURRENT_SOURCE_DIR}/lib/gmt6/lib/gmt.lib")
+    find_package(GMT REQUIRED)
+    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/lib/libtiff.dll DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/lib/libtiff.dll.a DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/gmtsar/filters DESTINATION ${SHARE_DIR})
+else ()
+    SET(CMAKE_INSTALL_PREFIX /usr/local/gmtsar)
+    SET(SHARE_DIR /usr/local/gmtsar/share)
+    find_package(TIFF REQUIRED)
+    find_package(LAPACK REQUIRED)
+    find_package(GMT REQUIRED)
+endif ()
+
 
 # check for math and POSIX functions
 include(ConfigureChecks)

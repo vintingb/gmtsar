@@ -62,7 +62,7 @@ Geophysical Research: Solid Earth, 120(8), pp.5952-5963.
 #include "sbas.h"
 #include "gmtsar.h"
 #include <stdint.h>
-#include "mman.h"
+#include <sys/mman.h>
 #include <fcntl.h>
 
 #define max(a, b) (((a) > (b)) ? (a) : (b))

@@ -58,12 +58,15 @@ if (WIN32)
     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/lib/libtiff.dll DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/lib/libtiff.dll.a DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
     file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/gmtsar/filters DESTINATION ${SHARE_DIR})
+    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/snaphu/bin/snaphu.exe DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/snaphu/bin/msys-2.0.dll DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 else ()
     SET(CMAKE_INSTALL_PREFIX /usr/local/gmtsar)
     SET(SHARE_DIR /usr/local/gmtsar/share)
     find_package(TIFF REQUIRED)
     find_package(LAPACK REQUIRED)
     find_package(GMT REQUIRED)
+    add_subdirectory(snaphu/src)
 endif ()
 
 
@@ -72,15 +75,8 @@ include(ConfigureChecks)
 
 # Add subdirectories
 add_subdirectory(gmtsar)
-# add_subdirectory (snaphu/src)
 add_subdirectory(preproc/S1A_preproc)
 
-# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/lib/libtiff.dll DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/lib/tiff/lib/libtiff.dll.a DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/gmtsar/filters DESTINATION ${SHARE_DIR})
-# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/snaphu/config/snaphu.conf.brief DESTINATION ${SHARE_DIR}/snaphu/config)
-# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/snaphu/bin/snaphu.exe DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/snaphu/bin/msys-2.0.dll DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 # Configuration done
 
 message(

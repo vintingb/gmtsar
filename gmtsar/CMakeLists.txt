@@ -103,13 +103,24 @@ add_executable(nearest_grid nearest_grid.c gmtsar.h)
 target_link_libraries(nearest_grid ${GMTSAR_LINK_LIBS})
 
 # add the install targets
-install(TARGETS gmtsar bperp nearest_grid update_PRM calc_dop_orb conv esarp extend_orbit make_gaussian_filter offset_topo phase2topo phasediff phasefilt resamp SAT_baseline SAT_llt2rat SAT_look sbas xcorr
-        ARCHIVE DESTINATION bin
-        COMPONENT Runtime
-        LIBRARY DESTINATION bin
-        COMPONENT Runtime
-        RUNTIME DESTINATION bin
-        COMPONENT Runtime)
+if (WIN32)
+    install(TARGETS gmtsar bperp nearest_grid update_PRM calc_dop_orb conv esarp extend_orbit make_gaussian_filter offset_topo phase2topo phasediff phasefilt resamp SAT_baseline SAT_llt2rat SAT_look sbas xcorr
+            ARCHIVE DESTINATION bin
+            COMPONENT Runtime
+            LIBRARY DESTINATION bin
+            COMPONENT Runtime
+            RUNTIME DESTINATION bin
+            COMPONENT Runtime)
+else ()
+    install(TARGETS gmtsar bperp nearest_grid update_PRM calc_dop_orb conv esarp extend_orbit make_gaussian_filter offset_topo phase2topo phasediff phasefilt resamp SAT_baseline SAT_llt2rat SAT_look sbas xcorr
+            ARCHIVE DESTINATION lib
+            COMPONENT Runtime
+            LIBRARY DESTINATION lib
+            COMPONENT Runtime
+            RUNTIME DESTINATION bin
+            COMPONENT Runtime)
+endif ()
+
 
 #add_subdirectory (csh)
 

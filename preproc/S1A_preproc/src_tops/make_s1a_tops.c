@@ -5,7 +5,7 @@
  ***************************************************************************/
 
 /***************************************************************************
- * Adapted from previous make_slc_s1a_tops code, start with point-by-point *
+ * Adapted from previous make_s1a_tops code, start with point-by-point *
  * precise shift for aligning two images                                   *
  *                                                                         *
  * 01/28/16 EXU added resampling module to do point-by-point co-registr    *
@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 /***************************************************************************
- * Modification history of previous make_slc_s1a_tops code:                *
+ * Modification history of previous make_s1a_tops code:                *
  *                                                                         *
  * Date   :  08/21/15 DTS begin modification for precision shifting        *
  * Date   :  10/24/15 DTS  Added the deramp and reramp                     *
@@ -72,7 +72,7 @@ int get_words(char *);
 
 int DEF_SIZE = 1024;
 
-char *USAGE = "\nUsage: make_slc_s1a_tops xml_file tiff_file output mode dr.grd da.grd\n"
+char *USAGE = "\nUsage: make_s1a_tops xml_file tiff_file output mode dr.grd da.grd\n"
               "         xml_file    - name of xml file \n"
               "         tiff_file   - name of tiff file \n"
               "         output      - stem name of output files .PRM, .LED, .SLC \n"
@@ -80,9 +80,9 @@ char *USAGE = "\nUsage: make_slc_s1a_tops xml_file tiff_file output mode dr.grd 
               "SLCL; (3) output ramp phase\n"
               "         dr.grd      - range shift table to be read in \n"
               "         da.grd      - azimuth shift table to be read in \n"
-              "\nExample: make_slc_s1a_tops s1a-s1-slc-vv-20140807.xml "
+              "\nExample: make_s1a_tops s1a-s1-slc-vv-20140807.xml "
               "s1a-s1-slc-vv-20140807.tiff S1A20140807 1 dr.grd da.grd\n"
-              "\n         make_slc_s1a_tops s1a-s1-slc-vv-20140807.xml "
+              "\n         make_s1a_tops s1a-s1-slc-vv-20140807.xml "
               "s1a-s1-slc-vv-20140807.tiff S1A20140807 1\n"
               "\nOutput: mode 1: S1A20140807.PRM S1A20140807.LED S1A20140807.SLC\n"
               "\n        mode 2: S1A20140807.PRM S1A20140807.LED S1A20140807.SLCH "

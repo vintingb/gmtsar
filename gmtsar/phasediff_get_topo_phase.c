@@ -261,9 +261,9 @@ int main(int argc, char **argv) {
 		fprintf(stderr, "near range: %lf %lf \n", p1.near_range, p2.near_range);
 
 	/* open SLC files */
-	if ((SLCfile1 = fopen(p1.SLC_file, "r")) == NULL)
+	if ((SLCfile1 = fopen(p1.SLC_file, "rb")) == NULL)
 		die("Can't open SLCfile", p1.SLC_file);
-	if ((SLCfile2 = fopen(p2.SLC_file, "r")) == NULL)
+	if ((SLCfile2 = fopen(p2.SLC_file, "rb")) == NULL)
 		die("Can't open SLCfile", p2.SLC_file);
 
 	/* set width and length */

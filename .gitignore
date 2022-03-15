@@ -2,6 +2,7 @@ autom4te.cache/
 bin/
 build
 cmake-build-debug
+build-wsl
 .vscode
 .idea
 config.log

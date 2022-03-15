@@ -2,7 +2,7 @@ __INSTRUCTIONS FOR INSTALLING GMTSAR ON Windows__
 ----------------------------------------------
 
 ## This is only for Sentinel-1
-__INSTALL__
+__INSTALL_ON_WINDOWS__
 
 1) Install mingw64.
 
@@ -17,8 +17,6 @@ __INSTALL__
 
        make
        make install
-
-5) Copy lib/tiff/* to install dir.
 
 
 

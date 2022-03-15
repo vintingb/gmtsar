@@ -81,8 +81,8 @@ FILE *read_PRM_file(char *prmfilename, char *input_file_name, struct PRM p, int 
     if (strncmp(p.dtype, "c", 1) == 0)
         format_flag = 3;
     if (verbose)
-        fprintf(stderr, " reading PRM file %s\n", input_file_name);
-    if ((f_input = fopen(input_file_name, "r")) == NULL)
+        fprintf(stderr, " reading SLC file %s\n", input_file_name);
+    if ((f_input = fopen(input_file_name, "rb")) == NULL)
         die("Can't open input data ", input_file_name);
     *xdim = p.num_rng_bins;
     *ydim = p.num_valid_az * p.num_patches;
@@ -210,7 +210,7 @@ int main(int argc, char **argv) {
                 die("Can't open ", input_name);
             if ((c = strstr(input_name, "=bf")))
                 c[0] = '\0'; /* Chop off any trailing =bf flag */
-            if ((f_input = fopen(input_name, "r")) == NULL)
+            if ((f_input = fopen(input_name, "rb")) == NULL)
                 die("Can't open ", input_name);
             fseek(f_input, 892L, SEEK_SET); /* Skip past the header */
             xdim = In->header->n_columns;
@@ -298,13 +298,13 @@ int main(int argc, char **argv) {
         if (fscanf(f_filter, "%f", &filtin) == EOF)
             die("filter incomplete", "");
         filter[i] = filtin;
-        anormax = anormax + (float) fabs(filter[i]);
+        anormax = anormax + (float) fabsf(filter[i]);
         rnormax = rnormax + filter[i];
     }
 
-    norm = 0.0f;
-    if (fabs(rnormax) > 0.05 * anormax)
-        norm = 1.0f;
+    norm = 0;
+    if (fabsf(rnormax) > 0.05 * anormax)
+        norm = 1;
     ic0 = 0;
     iend = ylen = ibuff;
 
@@ -356,10 +356,10 @@ int main(int argc, char **argv) {
             /* use a zero or null value if there is not enough data in the filter */
             Out->data[left_node + jout] = 0.0f;
             if (norm > 0) {
-                if (fabs(rnorm) > (0.01 * rnormax))
+                if (fabsf(rnorm) > (0.01 * rnormax))
                     Out->data[left_node + jout] = filtdat / rnorm;
             } else {
-                if (fabs(rnorm) < 0.0001 * anormax)
+                if (fabsf(rnorm) < 0.0001 * anormax)
                     Out->data[left_node + jout] = filtdat;
             }
 

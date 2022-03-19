@@ -4,7 +4,7 @@
 
 if (HAVE_M_LIBRARY)
     # link the math library
-    target_link_libraries(snaphu m)
+    set(snaphu m)
 endif (HAVE_M_LIBRARY)
 
 add_executable(snaphu

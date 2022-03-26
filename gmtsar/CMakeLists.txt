@@ -122,6 +122,6 @@ else ()
 endif ()
 
 
-#add_subdirectory (csh)
+add_subdirectory (csh)
 
 # vim: textwidth=78 noexpandtab tabstop=2 softtabstop=2 shiftwidth=2

@@ -2,11 +2,6 @@
 #	$Id: $
 #
 
-if (HAVE_M_LIBRARY)
-    # link the math library
-    set(snaphu m)
-endif (HAVE_M_LIBRARY)
-
 add_executable(snaphu
         snaphu.c
         snaphu_cost.c
@@ -17,7 +12,7 @@ add_executable(snaphu
         snaphu_util.c
         snaphu_cs2types.h
         snaphu.h)
-
+target_link_libraries(snaphu m)
 
 # add the install targets
 if (WIN32)

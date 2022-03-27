@@ -48,9 +48,9 @@ if (WIN32)
             COMPONENT Runtime)
 else ()
     install(TARGETS xmlC ext_orb_s1a spectral_diversity merge_swath stitch_tops make_slc_s1a make_s1a_tops make_s1a_tops_6par
-            ARCHIVE DESTINATION lib
+            ARCHIVE DESTINATION /usr/local/lib
             COMPONENT Runtime
-            LIBRARY DESTINATION lib
+            LIBRARY DESTINATION /usr/local/lib
             COMPONENT Runtime
             RUNTIME DESTINATION bin
             COMPONENT Runtime)

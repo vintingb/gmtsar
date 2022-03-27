@@ -113,9 +113,9 @@ if (WIN32)
             COMPONENT Runtime)
 else ()
     install(TARGETS gmtsar bperp nearest_grid update_PRM calc_dop_orb conv esarp extend_orbit make_gaussian_filter offset_topo phase2topo phasediff phasefilt resamp SAT_baseline SAT_llt2rat SAT_look sbas xcorr
-            ARCHIVE DESTINATION lib
+            ARCHIVE DESTINATION /usr/local/lib
             COMPONENT Runtime
-            LIBRARY DESTINATION lib
+            LIBRARY DESTINATION /usr/local/lib
             COMPONENT Runtime
             RUNTIME DESTINATION bin
             COMPONENT Runtime)

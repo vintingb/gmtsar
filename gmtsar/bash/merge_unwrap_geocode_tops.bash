@@ -57,7 +57,7 @@ for line in $(awk '{print $0}' $1); do
   fs1=$(grep first_sample $prm | awk '{print $3}')
   fs2=$(grep first_sample $prm2 | awk '{print $3}')
   cp $prm tmp.PRM
-  if [ $fs2 ] >$fs1; then
+  if [ $fs2 -gt $fs1 ]; then
     update_PRM tmp.PRM first_sample $fs2
   fi
   update_PRM tmp.PRM rshift $rshift

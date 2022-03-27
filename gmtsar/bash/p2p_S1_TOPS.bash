@@ -116,7 +116,7 @@ if [ $stage -eq 1 ]; then
   #
   m_lines=$(grep num_lines ../raw/$master.PRM | awk '{printf("%d",int($3))}')
   s_lines=$(grep num_lines ../raw/$aligned.PRM | awk '{printf("%d",int($3))}')
-  if [ $s_lines ] <$m_lines; then
+  if [ $s_lines -lt $m_lines ]; then
     update_PRM $master.PRM num_lines $s_lines
     update_PRM $master.PRM num_valid_az $s_lines
     update_PRM $master.PRM nrows $s_lines

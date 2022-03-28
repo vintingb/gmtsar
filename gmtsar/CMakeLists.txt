@@ -111,5 +111,6 @@ install(TARGETS gmtsar bperp nearest_grid update_PRM calc_dop_orb conv esarp ext
         RUNTIME DESTINATION bin
         COMPONENT Runtime)
 add_subdirectory (bash)
+add_subdirectory (filters)
 
 # vim: textwidth=78 noexpandtab tabstop=2 softtabstop=2 shiftwidth=2

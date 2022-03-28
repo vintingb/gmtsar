@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"sort"
 	"strings"
 
 	log "github.com/sirupsen/logrus"
 )
 
 var (
-	SFiLES []string
+	SFiLES orbit
 	tmpS   strings.Builder
 )
 
@@ -33,6 +34,7 @@ func init() {
 			SFiLES = append(SFiLES, strings.Split(file.Name(), ".zip")[0])
 		}
 	}
+	sort.Sort(SFiLES)
 	log.Infoln(SFiLES)
 }
 

@@ -575,8 +575,11 @@ signed char ValidDataArray(float **arr, long nrow, long ncol){
  */
 signed char IsFinite(double d){
 
+#ifdef SNAPHU_USE_FINITE
   return(finite(d));
-  /* return(isfinite(d)); */
+#else
+  return(isfinite(d));
+#endif
   /* return(!(isnan(d) || isinf(d))); */
   /* return(TRUE) */
 }

@@ -1,11 +1,8 @@
 #!/bin/bash
-#       $Id$
-#
 #
 alias rm='rm -f'
 #
 if [ $# -lt 2 ]; then
-  errormessage:
   echo ""
   echo "snaphu_interp.bash [GMTSAR] - Unwrap the phase with nearest neighbor interpolating low coherence and blank pixels"
   echo " "

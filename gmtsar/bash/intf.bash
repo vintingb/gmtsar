@@ -1,19 +1,10 @@
 #!/bin/bash
-#       $Id$
 #
-#  Xiaopeng Tong FEB 4 2010
-#
-# Make the interferogram.
-#
-#  Matt Wei May 4 2010, ENVISAT
-#
-# add in TSX, Jan 10 2014
 alias rm='rm -f'
 gmt set IO_NC4_CHUNK_SIZE classic
 #
 #
 if [ $# -lt 2 ]; then
-  errormessage:
   echo ""
   echo "Usage: intf.bash ref.PRM rep.PRM [-topo topogrd] [-model modelgrd]"
   echo ""
@@ -50,7 +41,7 @@ if [ $# -eq 2 ] || [ $# -eq 4 ] || [ $# -eq 6 ]; then
   echo "running phasediff..."
   phasediff $*
 else
-  goto errormessage
+  echo "Usage: intf.bash ref.PRM rep.PRM [-topo topogrd] [-model modelgrd]"
 fi
 mv $1"0" $1
 mv $2"0" $2

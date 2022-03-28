@@ -1,11 +1,4 @@
 #!/bin/bash
-#       $Id$
-#
-#  David T. Sandwell, MAR 11, 2010
-#
-# Clean the disk area in preparation for process2pass.bash
-# This should be run in the top directory.  An ls will show
-# raw SLC intf topo
 #
 alias rm='rm -f'
 #

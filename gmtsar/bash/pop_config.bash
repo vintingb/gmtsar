@@ -69,7 +69,7 @@ echo "topo_phase = 1"
 echo "# if above parameter = 1 then one should have put dem.grd in topo/"
 echo ""
 echo "# topo_ra shift (1 -- yes; 0 -- no)"
-
+echo "shift_topo = 0"
 echo ""
 echo "####################################################"
 echo "#   parameters for make and filter interferograms  #"
@@ -96,6 +96,7 @@ echo "# Set the decimation to be 1 if you want higher resolution images."
 echo "# Set the decimation to be 2 if you want images with smaller file size."
 echo "# "
 
+echo "dec_factor = 2 "
 echo "range_dec = 8"
 echo "azimuth_dec = 2"
 

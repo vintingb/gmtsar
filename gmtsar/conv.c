@@ -170,7 +170,6 @@ int main(int argc, char **argv) {
         return EXIT_FAILURE;
 
     ibuff = 512;
-    verbose = 1;
 
     null_sio_struct(&p);
     input_file_type = 1; /* default; GMT binary */

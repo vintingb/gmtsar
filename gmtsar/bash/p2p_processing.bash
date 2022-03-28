@@ -1,7 +1,5 @@
 #!/bin/bash
-
-# set -x
-
+#
 if [ $# != 4 ]; then
   echo ""
   echo "Usage: p2p_processing.bash SAT master_image aligned_image configuration_file "

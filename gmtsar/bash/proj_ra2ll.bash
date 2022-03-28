@@ -1,6 +1,4 @@
 #!/bin/bash
-#       $Id$
-#  D. Sandwell 1/12/07
 #
 alias rm='rm -f'
 if [ -f ~/.quiet ]; then

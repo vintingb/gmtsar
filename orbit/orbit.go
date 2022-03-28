@@ -80,6 +80,8 @@ func (s *sentinel) download(ot orbitType) bool {
 	}
 	s.orbitName = st.Entry.Title.Text + ".EOF"
 	s.orbitUrl = st.Entry.ID.Text + "/$value"
+	tmpS.WriteString(s.dirname + ".SAFE ")
+	tmpS.WriteString(st.Entry.Title.Text + ".EOF ")
 	log.Infoln(s.orbitName)
 	log.Infoln(s.orbitUrl)
 	r, err = req.Get(s.orbitUrl, header)

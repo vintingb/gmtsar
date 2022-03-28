@@ -1,15 +1,4 @@
 #!/bin/bash
-#       $Id$
-# Xiaohua Xu and David Sandwell Dec 23 2015
-#
-#  script to align S1 TOPS mode data
-#
-#  1) Make PRM and LED files for both master and aligned.
-#
-#  2) Do geometric back geocoding to make the range and azimuth alignment grids
-#
-#  3) Make PRM, LED and SLC files for both master and aligned that are aligned
-#     at the fractional pixel level.
 #
 alias rm='rm -f'
 #
@@ -213,4 +202,4 @@ calc_dop_orb $spre".PRM" tmp2 $earth_radius 0
 cat tmp2 >>$spre".PRM"
 rm tmp tmp2
 #
-rm topo.llt master.ratll aligned.ratll *tmp* flt.grd r.xyz a.xyz *.PRM0
+rm topo.llt master.ratll aligned.ratll ../*tmp* flt.grd r.xyz a.xyz ../*.PRM0

@@ -1,13 +1,8 @@
 #!/bin/bash
-#       $Id$
-#
-#  D. Sandwell FEB 10 2010
-#  Kurt Feigl 20150811 add annotation to grd files
 #
 alias rm='rm -f'
 #
 if [ $# -lt 1 ]; then
-  errormessage:
   echo ""
   echo "Usage: geocode.bash correlation_threshold"
   echo ""

@@ -1,12 +1,5 @@
 #!/bin/bash
 #
-# process Sentinel-1A TOPS data
-# read three consectutive scenes spanning the same time interval
-# make two inteferograms and then double difference them
-# to see grounding lines in polar regions, for example the Ross Ice Shelf
-# results of two interferograms are under directories merge1 and merge2 respectively
-# double difference results (phase_diff.grd) are in the doublediff folder
-
 alias rm='rm -f'
 #
 if [ $# -ne 7 ]; then
@@ -127,27 +120,27 @@ if [ $seq -eq 0 ]; then
 
 elif [ $seq -eq 1 ]; then
     cd F1/raw
-    align_tops.bash $f1s1 $2 $f1s2 $4 dem.grd >&log &
+    align_tops.bash $f1s1 $2 $f1s2 $4 dem.grd >&align_tops.log &
     s1pre1=$(echo $f1s1 | awk '{ print "S1_"substr($1,16,8)"_"substr($1,25,6)"_F"substr($1,7,1)}')
     s2pre1=$(echo $f1s2 | awk '{ print "S1_"substr($1,16,8)"_"substr($1,25,6)"_F"substr($1,7,1)}')
 
     cd ../../F2/raw
-    align_tops.bash $f2s1 $2 $f2s2 $4 dem.grd >&log &
+    align_tops.bash $f2s1 $2 $f2s2 $4 dem.grd >&align_tops.log &
     s1pre2=$(echo $f2s1 | awk '{ print "S1_"substr($1,16,8)"_"substr($1,25,6)"_F"substr($1,7,1)}')
     s2pre2=$(echo $f2s2 | awk '{ print "S1_"substr($1,16,8)"_"substr($1,25,6)"_F"substr($1,7,1)}')
 
     cd ../../F3/raw
-    align_tops.bash $f3s1 $2 $f3s2 $4 dem.grd >&log &
+    align_tops.bash $f3s1 $2 $f3s2 $4 dem.grd >&align_tops.log &
     s1pre3=$(echo $f3s1 | awk '{ print "S1_"substr($1,16,8)"_"substr($1,25,6)"_F"substr($1,7,1)}')
     s2pre3=$(echo $f3s2 | awk '{ print "S1_"substr($1,16,8)"_"substr($1,25,6)"_F"substr($1,7,1)}')
 
     wait
     cd ../../F1
-    p2p_S1_TOPS.bash $s1pre1 $s2pre1 $5 >&log &
+    p2p_S1_TOPS.bash $s1pre1 $s2pre1 $5 >&p2p_S1_TOPS.log &
     cd ../F2
-    p2p_S1_TOPS.bash $s1pre2 $s2pre2 $5 >&log &
+    p2p_S1_TOPS.bash $s1pre2 $s2pre2 $5 >&p2p_S1_TOPS.log &
     cd ../F3
-    p2p_S1_TOPS.bash $s1pre3 $s2pre3 $5 >&log &
+    p2p_S1_TOPS.bash $s1pre3 $s2pre3 $5 >&p2p_S1_TOPS.log &
     cd ..
     wait
 else

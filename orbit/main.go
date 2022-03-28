@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -8,9 +9,13 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-var SFiLES []string
+var (
+	SFiLES []string
+	tmpS   strings.Builder
+)
 
 func init() {
+	tmpS.WriteString("all.bash ")
 	pwd, err := os.Getwd()
 	if err != nil {
 		log.Fatalln(err)
@@ -23,7 +28,6 @@ func init() {
 	for _, file := range files {
 		if strings.HasSuffix(file.Name(), ".SAFE") {
 			SFiLES = append(SFiLES, strings.Split(file.Name(), ".SAFE")[0])
-
 		}
 		if strings.HasSuffix(file.Name(), ".zip") {
 			SFiLES = append(SFiLES, strings.Split(file.Name(), ".zip")[0])
@@ -43,9 +47,12 @@ func main() {
 			log.Info("Downloading AUX_POEORB success")
 		} else {
 			log.Info("Try to download AUX_RESORB")
-			s.download(AUX_RESORB)
-			log.Info("Downloading AUX_RESORB success")
+			if s.download(AUX_RESORB) {
+				log.Info("Downloading AUX_RESORB success")
+			} else {
+				log.Info("Downloading err")
+			}
 		}
 	}
-
+	fmt.Println(tmpS.String())
 }

@@ -1,11 +1,4 @@
 #!/bin/bash
-#       $Id$
-# Matt WEI Feb 1 2010
-# modified by Xiaopeng Feb 9 2010
-# modified by E. Fielding, DST, XT to add TSX data Jan 10 2014
-#=======================================================================
-#  script to make topography for interferograms
-#  The USGS elevations are height above WGS84 so this is OK.
 #
 alias rm='rm -f'
 #

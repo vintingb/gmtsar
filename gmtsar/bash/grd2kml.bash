@@ -1,10 +1,4 @@
 #!/bin/bash
-#       $Id$
-#
-#  D. Sandwell FEB 10 2010
-#
-#
-# script to convert a grd file to a kml file for Google Earth
 #
 if [ $# -lt 2 ] || [ $# -gt 3 ]; then
   echo " "

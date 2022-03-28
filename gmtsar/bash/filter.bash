@@ -1,15 +1,4 @@
 #!/bin/bash
-#       $Id$
-#
-#  Xiaopeng Tong and David Sandwell
-#  FEB 4 2010
-#  Matt Wei May 4 2010, ENVISAT
-#  DTS - May 26, 2010, added phase gadient
-#  EF, DTS, XT - Jan 10 2014, TSX
-#
-# Convolve the real.grd and imag.grd with gaussian filters.
-# Form amplitude, phase, phase gradient, and correlation images.
-#
 #
 alias rm='rm -f'
 gmt set IO_NC4_CHUNK_SIZE classic
@@ -22,8 +11,7 @@ thresh="5.e-21"
 gmt set COLOR_MODEL=hsv
 gmt set PROJ_LENGTH_UNIT=inch
 
-if [ $# -ne 4 ] && [ $# -ne 6 ]; then
-  errormessage:
+if [ $# -ne 4 ] && [ $# -ne 6 ] ; then
   echo ""
   echo "Usage: filter.bash master.PRM aligned.PRM filter decimation [rng_dec azi_dec]"
   echo ""

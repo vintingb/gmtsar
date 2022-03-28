@@ -1,10 +1,4 @@
 #!/bin/bash
-#       $Id$
-#
-#
-#    Xiaohua(Eric) XU, July 7, 2016
-#
-# Script for merging 3 subswaths TOPS interferograms and then unwrap and geocode.
 #
 if [ $# != 2 ]; then
   echo ""

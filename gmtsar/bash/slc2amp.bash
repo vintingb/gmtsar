@@ -1,8 +1,4 @@
 #!/bin/bash
-#       $Id$
-# Xiaopeng Tong Nov 23 2009
-#
-#
 # Converts a complex SLC file to a real amplitude grd
 # file using optional filter and a PRM file
 #

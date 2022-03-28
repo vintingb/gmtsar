@@ -1,12 +1,5 @@
 #!/bin/bash
 #
-#  David Dandwell, December 29, 2015
-#
-# process Sentinel-1A TOPS data
-# Automatically process a single frame of interferogram.
-# see instruction.txt for details.
-#
-
 alias rm='rm -f'
 #
 if [ $# -lt 3 ]; then
@@ -134,8 +127,7 @@ if [ $stage -eq 1 ]; then
   update_PRM $aligned.PRM fdd1 0
   update_PRM $aligned.PRM fddd1 0
   #
-  rm *.log
-  rm *.PRM0
+  rm ../*.PRM0
 
   cd ..
   echo "PREPROCESS.bash - END"

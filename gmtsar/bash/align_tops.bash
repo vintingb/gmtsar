@@ -11,7 +11,6 @@
 #  3) Make PRM, LED and SLC files for both master and aligned that are aligned
 #     at the fractional pixel level.
 #
-set -x
 alias rm='rm -f'
 #
 if [ $# != 5 ]; then

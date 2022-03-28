@@ -120,7 +120,7 @@ if [ $seq -eq 0 ]; then
     cd ../../F1
     p2p_S1_TOPS.bash $s1pre1 $s2pre1 $5
     cd ../F2
-    p2p_S1_TOPS.bash $s1pre2 $s2pre3 $6
+    p2p_S1_TOPS.bash $s1pre2 $s2pre3 $5
     cd ../F3
     p2p_S1_TOPS.bash $s1pre3 $s2pre3 $5
     cd ..

@@ -1,2 +1,4 @@
 #!/bin/bash
-echo $(dirname $(pwd))/share
+basepath=$(cd `dirname $0`; pwd)
+echo $(cd `dirname $basepath`; pwd)/share
+

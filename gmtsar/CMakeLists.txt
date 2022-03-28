@@ -12,7 +12,7 @@ endif (HAVE_M_LIBRARY)
 include_directories(${GMT_INCLUDE_DIR} ${TIFF_INCLUDE_DIR})
 
 if (WIN32)
-    add_library(gmtsar SHARED aastretch.c acpatch.c calc_dop.c conv2d.c do_freq_xcorr.c
+    add_library(gmtsar STATIC aastretch.c acpatch.c calc_dop.c conv2d.c do_freq_xcorr.c
             do_time_int_xcorr.c fft_bins.c fft_interpolate_routines.c file_stuff.c
             geoxyz.c get_locations.c get_params.c hermite_c.c highres_corr.c mman.c
             interpolate_orbit.c intp_coef.c ldr_orbit.c parse_xcorr_input.c plxyz.c
@@ -23,7 +23,7 @@ if (WIN32)
             sarleader_ALOS.h sarleader_fdr.h sfd_complex.h siocomplex.h soi.h xcorr.h
             update_PRM.h update_PRM_sub.c lib_strfuncs.c lib_functions.h soi.c gmtsar.c)
 else ()
-    add_library(gmtsar SHARED aastretch.c acpatch.c calc_dop.c conv2d.c do_freq_xcorr.c
+    add_library(gmtsar STATIC aastretch.c acpatch.c calc_dop.c conv2d.c do_freq_xcorr.c
             do_time_int_xcorr.c fft_bins.c fft_interpolate_routines.c file_stuff.c
             geoxyz.c get_locations.c get_params.c hermite_c.c highres_corr.c
             interpolate_orbit.c intp_coef.c ldr_orbit.c parse_xcorr_input.c plxyz.c
@@ -102,26 +102,14 @@ target_link_libraries(xcorr ${GMTSAR_LINK_LIBS})
 add_executable(nearest_grid nearest_grid.c gmtsar.h)
 target_link_libraries(nearest_grid ${GMTSAR_LINK_LIBS})
 
-# add the install targets
-if (WIN32)
-    install(TARGETS gmtsar bperp nearest_grid update_PRM calc_dop_orb conv esarp extend_orbit make_gaussian_filter offset_topo phase2topo phasediff phasefilt resamp SAT_baseline SAT_llt2rat SAT_look sbas xcorr
-            ARCHIVE DESTINATION bin
-            COMPONENT Runtime
-            LIBRARY DESTINATION bin
-            COMPONENT Runtime
-            RUNTIME DESTINATION bin
-            COMPONENT Runtime)
-else ()
-    install(TARGETS gmtsar bperp nearest_grid update_PRM calc_dop_orb conv esarp extend_orbit make_gaussian_filter offset_topo phase2topo phasediff phasefilt resamp SAT_baseline SAT_llt2rat SAT_look sbas xcorr
-            ARCHIVE DESTINATION /usr/local/lib
-            COMPONENT Runtime
-            LIBRARY DESTINATION /usr/local/lib
-            COMPONENT Runtime
-            RUNTIME DESTINATION bin
-            COMPONENT Runtime)
-endif ()
-
-
+# add the install target
+install(TARGETS gmtsar bperp nearest_grid update_PRM calc_dop_orb conv esarp extend_orbit make_gaussian_filter offset_topo phase2topo phasediff phasefilt resamp SAT_baseline SAT_llt2rat SAT_look sbas xcorr
+        ARCHIVE DESTINATION lib
+        COMPONENT Runtime
+        LIBRARY DESTINATION lib
+        COMPONENT Runtime
+        RUNTIME DESTINATION bin
+        COMPONENT Runtime)
 add_subdirectory (bash)
 
 # vim: textwidth=78 noexpandtab tabstop=2 softtabstop=2 shiftwidth=2

@@ -10,7 +10,7 @@ endif (HAVE_M_LIBRARY)
 
 include_directories(include ../../gmtsar ${TIFF_INCLUDE_DIR} ${GMT_INCLUDE_DIR})
 
-add_library(xmlC lib/xml.c include/xmlC.h include/lib_defs.h)
+add_library(xmlC STATIC lib/xml.c include/xmlC.h include/lib_defs.h)
 target_link_libraries(xmlC ${LINK_LIBS})
 
 set(LINK_LIBS ${LINK_LIBS} xmlC gmtsar ${TIFF_LIBRARY})
@@ -38,23 +38,15 @@ target_link_libraries(make_s1a_tops_6par ${LINK_LIBS})
 
 
 # add the install targets
-if (WIN32)
-    install(TARGETS xmlC ext_orb_s1a spectral_diversity merge_swath stitch_tops make_slc_s1a make_s1a_tops make_s1a_tops_6par
-            ARCHIVE DESTINATION bin
-            COMPONENT Runtime
-            LIBRARY DESTINATION bin
-            COMPONENT Runtime
-            RUNTIME DESTINATION bin
-            COMPONENT Runtime)
-else ()
-    install(TARGETS xmlC ext_orb_s1a spectral_diversity merge_swath stitch_tops make_slc_s1a make_s1a_tops make_s1a_tops_6par
-            ARCHIVE DESTINATION /usr/local/lib
-            COMPONENT Runtime
-            LIBRARY DESTINATION /usr/local/lib
-            COMPONENT Runtime
-            RUNTIME DESTINATION bin
-            COMPONENT Runtime)
-endif ()
+
+install(TARGETS xmlC ext_orb_s1a spectral_diversity merge_swath stitch_tops make_slc_s1a make_s1a_tops make_s1a_tops_6par
+        ARCHIVE DESTINATION lib
+        COMPONENT Runtime
+        LIBRARY DESTINATION lib
+        COMPONENT Runtime
+        RUNTIME DESTINATION bin
+        COMPONENT Runtime)
+
 
 
 # vim: textwidth=78 noexpandtab tabstop=2 softtabstop=2 shiftwidth=2

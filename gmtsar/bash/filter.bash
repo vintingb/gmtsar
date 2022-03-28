@@ -40,7 +40,6 @@ echo "filter.bash"
 #
 # define filter and decimation variables
 #
-set -x
 sharedir=$(gmtsar_sharedir.bash)
 filter3=$sharedir/filters/fill.3x3
 # filter4=$sharedir/filters/xdir

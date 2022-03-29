@@ -35,10 +35,10 @@ set(CMAKE_MODULE_PATH
 # Include configuration options (default options and options overridden by
 # user).
 include(ConfigCMake)
+include(CMakeDetermineGoCompiler)
 
 # Find UNIX commands
 include(FindUnixCommands)
-find_program(SVN svn)
 find_program(GS gs gswin64)
 
 # Make sure install on Windows
@@ -77,7 +77,7 @@ include(ConfigureChecks)
 # Add subdirectories
 add_subdirectory(gmtsar)
 add_subdirectory(preproc/S1A_preproc)
-
+add_subdirectory(orbit)
 # Configuration done
 
 message(
@@ -87,6 +87,8 @@ message(
   "*  TIFF library               : ${TIFF_LIBRARY}\n"
   "*  TIFF include dir           : ${TIFF_INCLUDE_DIR}\n"
   "*  LAPACK library             : ${LAPACK_LIBRARIES} ${LAPACK_lapack_LIBRARY}\n"
+  "*  Go COMPILER dir      : ${CMAKE_Go_COMPILER}\n"
+
   "*\n"
   "*  Locations:\n"
   "*  Installing GMTSAR in       : ${CMAKE_INSTALL_PREFIX}\n")

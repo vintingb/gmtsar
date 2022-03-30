@@ -182,7 +182,7 @@ resamp $mpre".PRM" $spre".PRM" $spre".PRMresamp" $spre".SLCresamp" 1
 mv $spre".SLCresamp" $spre".SLC"
 mv $spre".PRMresamp" $spre".PRM"
 #
-if [ $tmp_da -gt 1000 ] && [ $tmp_da -lt 1000 ]; then
+if [ $tmp_da -gt -1000 ] && [ $tmp_da -lt 1000 ]; then
   fitoffset.bash 3 3 offset.dat >>$spre.PRM
 else
   fitoffset.bash 3 3 offset2.dat >>$spre.PRM

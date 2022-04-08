@@ -12,6 +12,7 @@ __INSTALL_ON_WINDOWS__
 
        mkdir build
        cd build
+       cmake ..
 
 4) To build all executables, type
 
